@@ -29,9 +29,9 @@ fastclick
 raix:handlebar-helpers
 aldeed:autoform
 matb33:bootstrap-glyphicons
-msavin:jetsetter
 zimme:active-route
 gwendall:auth-client-callbacks
 aldeed:collection2-core@2.0.0
 accounts-ui
 accounts-password
+meteortoys:allthings

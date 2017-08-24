@@ -1,7 +1,22 @@
 import SimpleSchema from 'simpl-schema';
 SimpleSchema.extendOptions(['autoform']);
-
 Recipes = new Mongo.Collection('recipes');
+    
+Recipes.allow({
+    insert: function(userId,doc){
+        return !!userId;
+    }
+});
+
+Ingredient = new SimpleSchema({
+    name:{
+        type:String
+    },
+    amount:{
+        type:String
+    }
+});
+
 RecipeSchema = new SimpleSchema({
         name: {
             label: "Name",
@@ -10,6 +25,20 @@ RecipeSchema = new SimpleSchema({
         desc: {
             label: "Description",
             type: String
+        },
+        ingredients:{
+            type:Array
+        },
+        'ingredients.$':{
+            type:Ingredient
+        },
+        inMenu:{
+            type:Boolean,
+            defaultValue:false,
+            optional:true,
+            autoform:{
+                type:"hidden"
+            }
         },
         author:{
             type:String,
